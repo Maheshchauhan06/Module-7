@@ -4,10 +4,12 @@ import Banner from './components/Banner';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Product from './components/Product';
+import { createContext } from 'react';
 
  const  App =()=> {
 
   const [count, setcount] = useState(0)
+  const mycontext = createContext();
 
   const userResponse = [];
   const [allRes, setAllRes] = useState([]);
@@ -41,7 +43,7 @@ import Product from './components/Product';
 
 
   return (
-    <> 
+    <>  <mycontext.Provider value={count,setcount} >
     <div className="container">
     <div className="navbar"><Navbar count ={count} /></div>
       <div className="Banner"><Banner/></div>
@@ -59,6 +61,7 @@ import Product from './components/Product';
         </div>
         <div className="footer"><Footer/></div>
     </div>
+    </mycontext.Provider>
     </>
   );
 }
